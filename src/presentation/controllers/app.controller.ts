@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from '../../domain/services/app.service';
 import { Observable } from 'rxjs';
 
@@ -9,5 +9,10 @@ export class AppController {
   @Get('health/user-service')
   checkUserServiceHealth(): Observable<string> {
     return this.appService.pingUserService();
+  }
+
+  @Post('users')
+  createUser(@Body() args) {
+    return this.appService.createUser(args);
   }
 }
