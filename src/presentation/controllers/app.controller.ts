@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { AppService } from '../../domain/services/app.service';
 import { Observable } from 'rxjs';
 
 @Controller()

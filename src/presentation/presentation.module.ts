@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
+import { AppController } from './controllers/app.controller';
 import { ClientsModule } from '@nestjs/microservices';
-import { AppService } from './app.service';
+import { AppService } from '../domain/services/app.service';
 import { APP_INTERCEPTOR } from '@nestjs/core';
-import { TransformInterceptor } from './config/interceptors/transform.interceptor';
+import { TransformInterceptor } from '../application/interceptors/transform.interceptor';
 
 @Module({
   imports: [
@@ -23,4 +23,4 @@ import { TransformInterceptor } from './config/interceptors/transform.intercepto
     { provide: APP_INTERCEPTOR, useClass: TransformInterceptor },
   ],
 })
-export class AppModule {}
+export class PresentationModule {}
