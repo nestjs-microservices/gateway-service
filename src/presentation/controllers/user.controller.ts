@@ -1,13 +1,18 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { UserService } from '../../domain/services/user.service';
+import { CreateUserUseCase } from '../../application/use-cases/create-user/create-user.use-case';
+import { CreateUserPayload } from '../../application/use-cases/create-user/create-user.payload';
 
 @Controller('users')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly createUserUseCase: CreateUserUseCase,
+  ) {}
 
   @Post()
-  createUser(@Body() args) {
-    return this.userService.createUser(args);
+  createUser(@Body() args: CreateUserPayload) {
+    return this.createUserUseCase.exec(args);
   }
 
   @Get('email/:email')
