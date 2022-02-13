@@ -2,12 +2,11 @@ import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 
 @Injectable()
-export class AppService {
+export class UserService {
   constructor(
     @Inject('USER_SERVICE') private readonly userProxy: ClientProxy,
   ) {}
-
-  pingUserService() {
-    return this.userProxy.send({ cmd: 'ping' }, {});
+  createUser(args) {
+    return this.userProxy.send({ cmd: 'createUser' }, args);
   }
 }
