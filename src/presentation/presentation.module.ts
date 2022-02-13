@@ -10,7 +10,7 @@ import { GetUserByIdUseCase } from '../application/use-cases/get-user-by-id/get-
 import { GetUserByEmailUseCase } from '../application/use-cases/get-user-by-email/get-user-by-email.use-case';
 import { TerminusModule } from '@nestjs/terminus';
 import { HealthController } from './controllers/health.controller';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 const USE_CASES = [
   CreateUserUseCase,
@@ -26,8 +26,8 @@ const USE_CASES = [
       {
         name: 'USER_SERVICE',
         options: {
-          host: '0.0.0.0',
-          port: 8888,
+          host: process.env.USER_SERVICE_HOST,
+          port: process.env.USER_SERVICE_PORT,
         },
       },
     ]),
@@ -39,4 +39,6 @@ const USE_CASES = [
     ...USE_CASES,
   ],
 })
-export class PresentationModule {}
+export class PresentationModule {
+  constructor(private configService: ConfigService) {}
+}
