@@ -9,6 +9,7 @@ import { CreateUserUseCase } from '../application/use-cases/create-user/create-u
 import { GetUserByIdUseCase } from '../application/use-cases/get-user-by-id/get-user-by-id.use-case';
 import { GetUserByEmailUseCase } from '../application/use-cases/get-user-by-email/get-user-by-email.use-case';
 import { TerminusModule } from '@nestjs/terminus';
+import { HealthController } from './controllers/health.controller';
 
 const USE_CASES = [
   CreateUserUseCase,
@@ -29,7 +30,7 @@ const USE_CASES = [
     ]),
     TerminusModule,
   ],
-  controllers: [AppController, UserController],
+  controllers: [AppController, UserController, HealthController],
   providers: [
     AppService,
     { provide: APP_INTERCEPTOR, useClass: TransformInterceptor },
