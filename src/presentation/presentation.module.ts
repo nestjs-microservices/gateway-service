@@ -4,6 +4,8 @@ import { ClientsModule } from '@nestjs/microservices';
 import { AppService } from '../domain/services/app.service';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TransformInterceptor } from '../application/interceptors/transform.interceptor';
+import { UserController } from './controllers/user.controller';
+import { UserService } from '../domain/services/user.service';
 
 @Module({
   imports: [
@@ -17,9 +19,10 @@ import { TransformInterceptor } from '../application/interceptors/transform.inte
       },
     ]),
   ],
-  controllers: [AppController],
+  controllers: [AppController, UserController],
   providers: [
     AppService,
+    UserService,
     { provide: APP_INTERCEPTOR, useClass: TransformInterceptor },
   ],
 })
