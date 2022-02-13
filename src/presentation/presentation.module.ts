@@ -5,7 +5,6 @@ import { AppService } from '../domain/services/app.service';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TransformInterceptor } from '../application/interceptors/transform.interceptor';
 import { UserController } from './controllers/user.controller';
-import { UserService } from '../domain/services/user.service';
 import { CreateUserUseCase } from '../application/use-cases/create-user/create-user.use-case';
 import { GetUserByIdUseCase } from '../application/use-cases/get-user-by-id/get-user-by-id.use-case';
 import { GetUserByEmailUseCase } from '../application/use-cases/get-user-by-email/get-user-by-email.use-case';
@@ -31,7 +30,6 @@ const USE_CASES = [
   controllers: [AppController, UserController],
   providers: [
     AppService,
-    UserService,
     { provide: APP_INTERCEPTOR, useClass: TransformInterceptor },
     ...USE_CASES,
   ],
