@@ -8,6 +8,7 @@ import { UserController } from './controllers/user.controller';
 import { CreateUserUseCase } from '../application/use-cases/create-user/create-user.use-case';
 import { GetUserByIdUseCase } from '../application/use-cases/get-user-by-id/get-user-by-id.use-case';
 import { GetUserByEmailUseCase } from '../application/use-cases/get-user-by-email/get-user-by-email.use-case';
+import { TerminusModule } from '@nestjs/terminus';
 
 const USE_CASES = [
   CreateUserUseCase,
@@ -26,6 +27,7 @@ const USE_CASES = [
         },
       },
     ]),
+    TerminusModule,
   ],
   controllers: [AppController, UserController],
   providers: [
