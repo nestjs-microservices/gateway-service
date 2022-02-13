@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './controllers/app.controller';
 import { ClientsModule } from '@nestjs/microservices';
 import { AppService } from '../application/services/app.service';
 import { APP_INTERCEPTOR } from '@nestjs/core';
@@ -32,7 +31,7 @@ const USE_CASES = [
       },
     ]),
   ],
-  controllers: [AppController, UserController, HealthController],
+  controllers: [UserController, HealthController],
   providers: [
     AppService,
     { provide: APP_INTERCEPTOR, useClass: TransformInterceptor },
