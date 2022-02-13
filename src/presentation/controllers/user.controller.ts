@@ -10,8 +10,13 @@ export class UserController {
     return this.userService.createUser(args);
   }
 
-  @Get(':email')
+  @Get('email/:email')
   getUser(@Param('email') email: string) {
-    return this.userService.getUser(email);
+    return this.userService.getUserByEmail(email);
+  }
+
+  @Get(':id')
+  getUserById(@Param('id') id: number) {
+    return this.userService.getUserById(id);
   }
 }
