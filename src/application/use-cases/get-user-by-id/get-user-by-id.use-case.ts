@@ -9,6 +9,6 @@ export class GetUserByIdUseCase implements UseCase {
   ) {}
 
   exec(payload) {
-    return this.clientProxy.send({ cmd: 'getUserBy' }, payload);
+    return this.clientProxy.send({ cmd: 'getUserById' }, payload);
   }
 }
