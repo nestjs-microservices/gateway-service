@@ -7,8 +7,9 @@ import { TransformInterceptor } from '../application/interceptors/transform.inte
 import { UserController } from './controllers/user.controller';
 import { UserService } from '../domain/services/user.service';
 import { CreateUserUseCase } from '../application/use-cases/create-user/create-user.use-case';
+import { GetUserByIdUseCase } from '../application/use-cases/get-user-by-id/get-user-by-id.use-case';
 
-const USE_CASES = [CreateUserUseCase];
+const USE_CASES = [CreateUserUseCase, GetUserByIdUseCase];
 
 @Module({
   imports: [
