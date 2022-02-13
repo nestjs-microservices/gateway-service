@@ -10,9 +10,4 @@ export class AppController {
   checkUserServiceHealth(): Observable<string> {
     return this.appService.pingUserService();
   }
-
-  @Post('users')
-  createUser(@Body() args) {
-    return this.appService.createUser(args);
-  }
 }
