@@ -10,6 +10,7 @@ import { GetUserByIdUseCase } from '../application/use-cases/get-user-by-id/get-
 import { GetUserByEmailUseCase } from '../application/use-cases/get-user-by-email/get-user-by-email.use-case';
 import { TerminusModule } from '@nestjs/terminus';
 import { HealthController } from './controllers/health.controller';
+import { ConfigModule } from '@nestjs/config';
 
 const USE_CASES = [
   CreateUserUseCase,
@@ -19,6 +20,8 @@ const USE_CASES = [
 
 @Module({
   imports: [
+    TerminusModule,
+    ConfigModule.forRoot(),
     ClientsModule.register([
       {
         name: 'USER_SERVICE',
@@ -28,7 +31,6 @@ const USE_CASES = [
         },
       },
     ]),
-    TerminusModule,
   ],
   controllers: [AppController, UserController, HealthController],
   providers: [
