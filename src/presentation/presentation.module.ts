@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './controllers/app.controller';
 import { ClientsModule } from '@nestjs/microservices';
-import { AppService } from '../domain/services/app.service';
+import { AppService } from '../application/services/app.service';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TransformInterceptor } from '../application/interceptors/transform.interceptor';
 import { UserController } from './controllers/user.controller';
