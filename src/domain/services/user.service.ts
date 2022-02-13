@@ -11,7 +11,11 @@ export class UserService {
     return this.userProxy.send({ cmd: 'createUser' }, args);
   }
 
-  getUser(email: string) {
-    return this.userProxy.send({ cmd: 'getUser' }, email);
+  getUserByEmail(email: string) {
+    return this.userProxy.send({ cmd: 'getUserByEmail' }, email);
+  }
+
+  getUserById(id: number) {
+    return this.userProxy.send({ cmd: 'getUserById' }, +id);
   }
 }
