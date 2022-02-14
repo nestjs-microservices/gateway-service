@@ -10,11 +10,13 @@ import { GetUserByEmailUseCase } from '../application/use-cases/get-user-by-emai
 import { TerminusModule } from '@nestjs/terminus';
 import { HealthController } from './controllers/health.controller';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UpdateUserUseCase } from '../application/use-cases/update-user/update-user.use-case';
 
 const USE_CASES = [
   CreateUserUseCase,
   GetUserByIdUseCase,
   GetUserByEmailUseCase,
+  UpdateUserUseCase,
 ];
 
 @Module({
