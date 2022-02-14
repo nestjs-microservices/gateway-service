@@ -11,6 +11,8 @@ import { TerminusModule } from '@nestjs/terminus';
 import { HealthController } from './controllers/health.controller';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UpdateUserUseCase } from '../application/use-cases/update-user/update-user.use-case';
+import { RequestInterceptor } from '../application/interceptors/request.interceptor';
+import { LoggerService } from '../application/services/logger.service';
 
 const USE_CASES = [
   CreateUserUseCase,
@@ -36,7 +38,9 @@ const USE_CASES = [
   controllers: [UserController, HealthController],
   providers: [
     AppService,
+    LoggerService,
     { provide: APP_INTERCEPTOR, useClass: TransformInterceptor },
+    { provide: APP_INTERCEPTOR, useClass: RequestInterceptor },
     ...USE_CASES,
   ],
 })
