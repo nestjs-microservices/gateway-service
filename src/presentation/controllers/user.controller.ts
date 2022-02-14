@@ -32,6 +32,6 @@ export class UserController {
 
   @Put(':id')
   updateUser(@Param('id') id: number, @Body() data: UpdateUserPayload) {
-    return this.getUserByIdUseCase.exec({ id, data });
+    return this.updateUserUseCase.exec({ id, data });
   }
 }
